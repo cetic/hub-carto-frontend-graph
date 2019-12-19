@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/hub-carto-graph.css"><!-- include file app.css before loading body -->
+</head>
+<body>
+<h1><a>Exemple d'intégration de graphe relationnel</a></h1>
+
+<div id="hub-carto-outer">
+    <div id="waiting_div">
+        <text style="font-size: large;">Gathering data...</text>
+        <img src="img/loading.gif"><!--https://www.behance.net/gallery/31234507/Open-source-Loading-GIF-Icons-Vol-1-->
+    </div>
+</div>
+<div id="footer" class="center">
+    <img src="img/hub-C_logo.png">
+    <img src="img/logo_FEDER wallonie.svg">
+    <img src="img/DigitalWallonia.png">
+</div>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<script src="https://unpkg.com/d3@5.9.2/dist/d3.js"></script>
+<script src="https://ialab.it.monash.edu/webcola/cola.js"></script>
+
+<script type="text/javascript">
+    // Parameters related to app-graph.js
+    //
+    // address for retrieving graph data json from CETIC backend is https://carto-hub-creatif.cetic.be/data.json
+    // var data_addr = "https://carto-hub-creatif.cetic.be/data.json";
+
+    // you need to pass some parameters to select which data you want.
+    // here is a list of possible parameters:
+    //  - You need to add at least one of these parameters (you can add more than one)
+    //     - var request_hub_creatif = true; --> show elements related to hub_creatif
+    var request_hub_creatif = true;
+    //     - var request_living_lab = true; --> show elements related to living_lab
+    // var request_living_lab = true;
+    //     - var request_fab_lab = true; --> show elements related to fab_lab
+    var request_fab_lab = true;
+    //     - var request_espace_coworking = true; --> show elements related to espace_coworking
+    // var request_espace_coworking = true;
+    //     - var request_creative_wallonia = true; --> show elements related to creative_wallonia
+    // var request_creative_wallonia = true;
+    //  - You need to specify which categories of elements to be included in the response
+    //     - filters.elements="entities"; --> only main entities
+    //     - filters.elements="enterprises"; --> only main entities and linked enterprises
+    //     - filters.elements="contacts"; --> only main entities and linked contacts
+    //     - filters.elements="all"; --> main entities + linked enterprises + linked contacts WARNING takes lot of time to refresh backend data (1x/24h)
+    var filter_elements = "contacts";
+    //  - By default, only elements validated by digital wallonia will be included.
+    //    If you want to include also elements NOT validated by digital wallonia, you can add this parameter
+    //     - var filter_not_only_digital_wallonia = true;
+
+    // You can adjust default_zoom value of the graph
+    var default_zoom = 0.70; //float or int value (default: 1)
+
+    // You can choose to not show timestamp
+    var show_timestamp = false;
+
+    // You need to create a div in which the graph will be included and specify its id
+    var div_outer_graph = d3.select("#hub-carto-outer");
+
+    // You can customize some size parameters of the graph:
+    var width = 1000;
+    var height = 800;
+    var margin = 5;
+</script>
+
+
+<script src="js/app-graph.js"></script> <!-- include file app-graph.js at end of html file -->
+</body>
+</html>
